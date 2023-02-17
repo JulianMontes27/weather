@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
-import axios from 'axios'
+import axios from 'axios';
+import { Footer } from './components/index';
 
 const App = () => {
   const [data, setData]=useState([]);
@@ -29,9 +30,9 @@ const App = () => {
         <input className='placeholder-slate-300 py-[1.5rem] px-[.7rem] rounded-2xl bg-input border h-2 text-white' type="text" id="inp" onChange={event => setLoc(event.target.value)} onKeyDown={handleLoc} placeholder='Enter a location...'
          />
       </div>
-      <div id='container' className='max-w-[700px] h-[700px] m-auto px-[1rem] py-[0rem] relative top-[10%] flex flex-col justify-between'>
+      <div id='container' className='max-w-[700px] h-[700px] m-auto px-[1rem] py-[0rem] relative sm:top-[0] top-[0] flex flex-col justify-between'>
         <div id='top' className='w-full mx-[1rem] my-auto'>
-          <div id='location'>
+          <div id='location' className=''>
             {
               data.sys ? <p>{data.name}, {data.sys.country}</p> : ''
             }
@@ -49,7 +50,7 @@ const App = () => {
         </div>
         {
           data.name !== undefined ? 
-          <div id='bottom' className='flex justify-evenly text-center w-full my-auto mx-[1rem] p-[1rem] rounded-2xl bg-rgbaBG'>
+          <div id='bottom' className='flex justify-evenly text-center w-full  p-[1rem] rounded-2xl bg-rgbaBG'>
           <div id="feels">
             {data.main ? <p className='font-bold'>{Math.round(parseFloat(data.main.feels_like))} C°</p> : null}
             <p className='font-light'>Feels like</p>
@@ -66,6 +67,9 @@ const App = () => {
           : null
         }
         
+      </div>
+      <div>
+        <Footer />
       </div>
     </div>
   )
