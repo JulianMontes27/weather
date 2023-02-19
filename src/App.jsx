@@ -6,7 +6,9 @@ const App = () => {
   const [data, setData]=useState([]);
   const [loc, setLoc]= useState('');
 
-  const url=`http://api.openweathermap.org/geo/1.0/direct?q=${loc}&limit=1&appid=b4015e6a425025c751c407cb041d5e7a`;
+  const key= import.meta.env.VITE_API_KEY
+
+  const url=`http://api.openweathermap.org/geo/1.0/direct?q=${loc}&limit=1&appid=${key}`;
 
   const handleLoc = (e) => {
     if (e.key === 'Enter'){
